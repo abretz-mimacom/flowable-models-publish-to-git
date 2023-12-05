@@ -1,5 +1,3 @@
-package com.celigo.orderfulfillment.design.RevisionPublisher;
-
 import com.flowable.design.engine.api.history.AppRevision;
 import com.flowable.design.engine.api.runtime.Model;
 import com.flowable.design.rest.service.api.DesignRestApiInterceptor;

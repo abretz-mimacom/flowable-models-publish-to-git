@@ -1,4 +1,4 @@
-package com.celigo.orderfulfillment.design.RevisionPublisher;
+package com.flowable.design.RevisionPublisher;
 
 import com.flowable.design.engine.api.history.AppRevision;
 import com.flowable.design.engine.api.history.ModelHistoryService;
