@@ -5,6 +5,7 @@ import com.flowable.autoconfigure.design.security.DesignHttpSecurityCustomizer;
 import com.flowable.design.security.spring.web.authentication.AjaxAuthenticationFailureHandler;
 import com.flowable.design.security.spring.web.authentication.AjaxAuthenticationSuccessHandler;
 import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +20,7 @@ import org.springframework.security.web.util.matcher.AnyRequestMatcher;
 
 import java.util.stream.Collectors;
 
+@ConditionalOnMissingBean(SecurityConfiguration.class)
 @Configuration(proxyBeanMethods = false)
 @EnableWebSecurity
 public class SecurityConfiguration {
