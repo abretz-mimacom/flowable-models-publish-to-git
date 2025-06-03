@@ -23,6 +23,62 @@
         <liquibase.skip>false</liquibase.skip>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.flowable.design</groupId>
+            <artifactId>flowable-spring-boot-starter-design</artifactId>
+            <version>${com.flowable.platform.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.flowable.design</groupId>
+            <artifactId>flowable-spring-boot-starter-design-actuator</artifactId>
+            <version>${com.flowable.platform.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.flowable.platform</groupId>
+            <artifactId>flowable-platform-palette</artifactId>
+            <version>${com.flowable.platform.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.flowable.engage</groupId>
+            <artifactId>flowable-engage-palette</artifactId>
+            <version>${com.flowable.platform.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jgit</groupId>
+            <artifactId>org.eclipse.jgit</artifactId>
+            <version>5.11.0.202103091610-r</version>
+        </dependency>
+        <dependency>
+          <groupId>com.h2database</groupId>
+          <artifactId>h2</artifactId>
+        </dependency>
+
+        <!-- Spring Boot -->
+        <!-- =========== -->
+        <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-tomcat</artifactId>
+          <scope>provided</scope>
+        </dependency>
+        <!-- Test dependencies -->
+        <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-test</artifactId>
+          <scope>test</scope>
+        </dependency>
+<!--        <dependency>-->
+<!--          <groupId>org.flowable</groupId>-->
+<!--          <artifactId>flowable-design-engine</artifactId>-->
+<!--          <version>3.0.0</version>-->
+<!--          <scope>test</scope>-->
+<!--        </dependency>-->
+    </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <!-- Imports the bill-of-materials POM. -->
@@ -35,5 +91,34 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <build>
+      <plugins>
+        <!-- Spring Boot Maven Plugin -->
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <executions>
+            <execution>
+              <goals>
+                <goal>repackage</goal>
+              </goals>
+              <configuration>
+                <skip>true</skip> <!-- Skip creating an executable JAR -->
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
 
+        <!-- Compiler Plugin -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.11.0</version>
+          <configuration>
+            <source>${java.version}</source>
+            <target>${java.version}</target>
+          </configuration>
+        </plugin>
+      </plugins>
+    </build>
 </project>

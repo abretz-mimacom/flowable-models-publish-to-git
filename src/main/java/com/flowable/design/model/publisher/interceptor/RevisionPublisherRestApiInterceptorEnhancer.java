@@ -1,5 +1,8 @@
+package com.flowable.design.model.publisher.interceptor;
+
 import com.flowable.design.engine.api.history.AppRevision;
 import com.flowable.design.engine.api.runtime.Model;
+import com.flowable.design.model.publisher.service.GitRepoPublisherService;
 import com.flowable.design.rest.service.api.DesignRestApiInterceptor;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.slf4j.Logger;

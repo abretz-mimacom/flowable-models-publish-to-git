@@ -1,4 +1,4 @@
-package com.flowable.design.RevisionPublisher;
+package com.flowable.design.model.publisher.service;
 
 import com.flowable.design.engine.api.history.AppRevision;
 import com.flowable.design.engine.api.runtime.Model;
