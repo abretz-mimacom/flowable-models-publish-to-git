@@ -1,10 +1,7 @@
-package com.flowable.design.model.publisher.configuration;
+package com.flowable.design.model.publisher;
 
-import com.flowable.autoconfigure.design.DesignEngineAutoConfiguration;
-import com.flowable.autoconfigure.design.rest.RestApiAutoConfiguration;
 import com.flowable.design.model.publisher.interceptor.BasicDesignRestApiInterceptor;
 import com.flowable.design.rest.service.api.DesignRestApiInterceptor;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
