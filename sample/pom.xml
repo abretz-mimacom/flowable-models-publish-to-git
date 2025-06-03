@@ -50,6 +50,11 @@
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.flowable.design</groupId>
+      <artifactId>model-publisher</artifactId>
+      <version>${com.flowable.platform.version}</version>
+    </dependency>
 
     <!-- Spring Boot -->
     <!-- =========== -->
