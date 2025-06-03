@@ -2,6 +2,7 @@ package com.flowable.design.model.publisher.service;
 
 import com.flowable.design.engine.api.history.AppRevision;
 import com.flowable.design.engine.api.runtime.Model;
+import com.flowable.design.model.publisher.properties.ModelPublisherProperties;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.api.errors.NoFilepatternException;
@@ -12,12 +13,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
 
 @Service
+@EnableConfigurationProperties(ModelPublisherProperties.class)
 public class GitRepoPublisherService {
 
     @Autowired

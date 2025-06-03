@@ -1,0 +1,5 @@
+com.flowable.design.model.publisher.RevisionPublisherAutoconfiguration
+com.flowable.design.model.publisher.service.GitRepoPublisherService
+com.flowable.design.model.publisher.service.ModelDefinitionWriterService
+com.flowable.design.model.publisher.interceptor.RevisionPublisherRestApiInterceptorEnhancer
+com.flowable.design.model.publisher.properties.ModelPublisherProperties

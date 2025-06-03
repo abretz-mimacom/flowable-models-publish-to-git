@@ -2,9 +2,11 @@ package com.flowable.design.model.publisher.service;
 
 import com.flowable.design.engine.api.history.AppRevision;
 import com.flowable.design.engine.api.history.ModelHistoryService;
+import com.flowable.design.model.publisher.properties.ModelPublisherProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -12,6 +14,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 @Service
+@EnableConfigurationProperties(ModelPublisherProperties.class)
 public class ModelDefinitionWriterService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ModelDefinitionWriterService.class);

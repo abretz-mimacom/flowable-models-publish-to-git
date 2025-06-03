@@ -46,39 +46,16 @@
             <artifactId>org.eclipse.jgit</artifactId>
             <version>5.11.0.202103091610-r</version>
         </dependency>
-        <dependency>
-          <groupId>com.h2database</groupId>
-          <artifactId>h2</artifactId>
-        </dependency>
-
-        <!-- Spring Boot -->
-        <!-- =========== -->
-        <dependency>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter</artifactId>
-          <scope>provided</scope> <!-- Mark as provided -->
-        </dependency>
-        <dependency>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-tomcat</artifactId>
-          <scope>provided</scope>
-        </dependency>
         <!-- Test dependencies -->
         <dependency>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-test</artifactId>
           <scope>test</scope>
         </dependency>
-<!--        <dependency>-->
-<!--          <groupId>org.flowable</groupId>-->
-<!--          <artifactId>flowable-design-engine</artifactId>-->
-<!--          <version>3.0.0</version>-->
-<!--          <scope>test</scope>-->
-<!--        </dependency>-->
+        <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -100,14 +77,14 @@
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
           <executions>
-            <execution>
-              <goals>
-                <goal>repackage</goal>
-              </goals>
-              <configuration>
-                <skip>true</skip> <!-- Skip creating an executable JAR -->
-              </configuration>
-            </execution>
+<!--            <execution>-->
+<!--              <goals>-->
+<!--                <goal>repackage</goal>-->
+<!--              </goals>-->
+<!--              <configuration>-->
+<!--                <skip>true</skip> &lt;!&ndash; Skip creating an executable JAR &ndash;&gt;-->
+<!--              </configuration>-->
+<!--            </execution>-->
           </executions>
         </plugin>
 
