@@ -1,14 +1,18 @@
 package com.flowable.design.model.publisher.configuration;
 
+import com.flowable.autoconfigure.design.DesignEngineAutoConfiguration;
+import com.flowable.autoconfigure.design.rest.RestApiAutoConfiguration;
 import com.flowable.design.model.publisher.interceptor.BasicDesignRestApiInterceptor;
 import com.flowable.design.rest.service.api.DesignRestApiInterceptor;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.Configuration;
 
-@Service
-@ConditionalOnProperty(prefix = "flowable.design.git.repo", name = "enabled", havingValue = "true")
+//@AutoConfiguration(after = {
+//    DesignEngineAutoConfiguration.class})
+//@ConditionalOnProperty(prefix = "flowable.design.git.repo", name = "enabled", havingValue = "true")
+@Configuration
 public class RevisionPublisherAutoconfiguration {
     @ConditionalOnMissingBean(DesignRestApiInterceptor.class)
     @Bean

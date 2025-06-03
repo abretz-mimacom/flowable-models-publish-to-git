@@ -1,37 +1,49 @@
 package com.flowable.design.model.publisher.interceptor;
 
+import com.flowable.design.engine.api.ModelResource;
 import com.flowable.design.engine.api.ModelType;
-import com.flowable.design.engine.api.history.AppRevision;
+import com.flowable.design.engine.api.PackageType;
 import com.flowable.design.engine.api.history.ModelHistory;
+import com.flowable.design.engine.api.history.PackageRevision;
 import com.flowable.design.engine.api.management.Workspace;
 import com.flowable.design.engine.api.runtime.Model;
 import com.flowable.design.rest.service.api.DesignRestApiInterceptor;
 import com.flowable.design.rest.service.api.model.*;
 import com.flowable.design.rest.service.api.model._import.ImportModelRequest;
 import com.flowable.design.rest.service.api.model.clone.ModelDuplicateRequest;
-import com.flowable.design.rest.service.api.model.history.AppRevisionCreateRequest;
+import com.flowable.design.rest.service.api.model.export.ExportPackageRequest;
 import com.flowable.design.rest.service.api.model.history.ModelHistoryActionRequest;
+import com.flowable.design.rest.service.api.model.history.PackageRevisionCreateRequest;
 import com.flowable.design.rest.service.api.model.translation.Translation;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.Map;
 
 public class BasicDesignRestApiInterceptor implements DesignRestApiInterceptor {
 
-    public BasicDesignRestApiInterceptor() {
-
-    }
     @Override
-    public void updateApp(Workspace workspace, Model appModel, AppModelUpdateRequest request) {
+    public void updatePackage(Workspace workspace, Model packageModel, PackageModelUpdateRequest request) {
 
     }
 
     @Override
-    public void updateAppModels(Workspace workspace, Model appModel, AppModelUpdateModelsRequest request) {
+    public void updatePackageKey(Workspace workspace, Model packageModel, ModelUpdateKeyRequest request) {
 
     }
 
     @Override
-    public void updateModelContent(Workspace workspace, Model appModel, Model model, ModelContentUpdateRequest request) {
+    public void updatePackageModels(Workspace workspace, Model packageModel, PackageModelUpdateModelsRequest request) {
+
+    }
+
+    @Override
+    public void refreshPackageRelations(Workspace workspace, Model packageModel) {
+
+    }
+
+    @Override
+    public void updateModelContent(Workspace workspace, Model packageModel, Model model, ModelContentUpdateRequest request) {
 
     }
 
@@ -41,7 +53,12 @@ public class BasicDesignRestApiInterceptor implements DesignRestApiInterceptor {
     }
 
     @Override
-    public void updateModel(Workspace workspace, Model appModel, Model model, ModelUpdateRequest request) {
+    public void updateModel(Workspace workspace, Model packageModel, Model model, ModelUpdateRequest request) {
+
+    }
+
+    @Override
+    public void updateModelKey(Workspace workspace, Model packageModel, Model model, ModelUpdateKeyRequest request) {
 
     }
 
@@ -51,7 +68,17 @@ public class BasicDesignRestApiInterceptor implements DesignRestApiInterceptor {
     }
 
     @Override
+    public void updateModelKey(Workspace workspace, Model model, ModelUpdateKeyRequest request) {
+
+    }
+
+    @Override
     public void publishApp(Workspace workspace, Model appModel, AppPublishRequest request) {
+
+    }
+
+    @Override
+    public void exportPackage(Workspace workspace, Model packageModel, ExportPackageRequest request) {
 
     }
 
@@ -61,12 +88,12 @@ public class BasicDesignRestApiInterceptor implements DesignRestApiInterceptor {
     }
 
     @Override
-    public void duplicateModel(Workspace workspace, Model appModel, Model baseModel, ModelDuplicateRequest request) {
+    public void duplicateModel(Workspace workspace, Model packageModel, Model baseModel, ModelDuplicateRequest request) {
 
     }
 
     @Override
-    public void deleteApp(Workspace workspace, Model appModel, AppDeleteRequest request) {
+    public void deletePackage(Workspace workspace, Model packageModel, PackageDeleteRequest request) {
 
     }
 
@@ -76,7 +103,7 @@ public class BasicDesignRestApiInterceptor implements DesignRestApiInterceptor {
     }
 
     @Override
-    public void deleteModel(Workspace workspace, Model appModel, Model model, ModelDeleteRequest request) {
+    public void deleteModel(Workspace workspace, Model packageModel, Model model, ModelDeleteRequest request) {
 
     }
 
@@ -86,7 +113,7 @@ public class BasicDesignRestApiInterceptor implements DesignRestApiInterceptor {
     }
 
     @Override
-    public void createModel(Workspace workspace, Model appModel, ModelCreateRequest request) {
+    public void createModel(Workspace workspace, Model packageModel, ModelCreateRequest request) {
 
     }
 
@@ -96,12 +123,22 @@ public class BasicDesignRestApiInterceptor implements DesignRestApiInterceptor {
     }
 
     @Override
-    public void migrateModel(Workspace workspace, Model appModel, Model model) {
+    public void migrateModel(Workspace workspace, Model packageModel, Model model) {
 
     }
 
     @Override
-    public void importAppModel(Workspace workspace, ImportModelRequest restApiInterceptor) {
+    public void exportModel(Workspace workspace, Model packageModel, Model model) {
+
+    }
+
+    @Override
+    public void exportModel(Workspace workspace, Model packageModel, Model model, int version) {
+
+    }
+
+    @Override
+    public void importPackageModel(Workspace workspace, PackageType packageType, ImportModelRequest request) {
 
     }
 
@@ -111,7 +148,12 @@ public class BasicDesignRestApiInterceptor implements DesignRestApiInterceptor {
     }
 
     @Override
-    public void importModel(Workspace workspace, Model appModel, ModelType modelType, ImportModelRequest request) {
+    public void importModel(Workspace workspace, Model packageModel, ModelType modelType, ImportModelRequest request) {
+
+    }
+
+    @Override
+    public void importModels(Workspace workspace, Model packageModel, List<MultipartFile> files, String importStrategy) {
 
     }
 
@@ -121,42 +163,47 @@ public class BasicDesignRestApiInterceptor implements DesignRestApiInterceptor {
     }
 
     @Override
-    public void createAppRevision(Workspace workspace, Model appModel, AppRevisionCreateRequest request) {
+    public void createPackageRevision(Workspace workspace, Model packageModel, PackageRevisionCreateRequest request) {
 
     }
 
     @Override
-    public void deleteAppRevision(Workspace workspace, Model appModel, AppRevision appRevision) {
+    public void deletePackageRevision(Workspace workspace, Model packageModel, PackageRevision packageRevision) {
 
     }
 
     @Override
-    public void publishAppRevision(Workspace workspace, Model appModel, AppRevision appRevision, AppPublishRequest request) {
+    public void publishPackageRevision(Workspace workspace, Model appModel, PackageRevision packageRevision, AppPublishRequest request) {
 
     }
 
     @Override
-    public void revertAppToRevision(Workspace workspace, Model appModel, AppRevision appRevision) {
+    public void revertPackageToRevision(Workspace workspace, Model packageModel, PackageRevision packageRevision) {
 
     }
 
     @Override
-    public void copyRevisionIntoApp(Workspace workspace, Model app, AppRevision appRevision) {
+    public void copyRevisionIntoPackage(Workspace workspace, Model packageModel, PackageRevision packageRevision) {
 
     }
 
     @Override
-    public void copyRevisionIntoWorkspace(Workspace workspace, AppRevision appRevision) {
+    public byte[] downloadPackageRevision(Workspace workspace, Model packageModel, PackageRevision packageRevision, byte[] revisionExportBytes) {
+        return new byte[0];
+    }
+
+    @Override
+    public void copyRevisionIntoWorkspace(Workspace workspace, PackageRevision packageRevision) {
 
     }
 
     @Override
-    public void revertModelToVersion(Workspace workspace, Model appModel, Model model, ModelHistory modelHistory, ModelHistoryActionRequest request) {
+    public void revertModelToVersion(Workspace workspace, Model packageModel, Model model, ModelHistory modelHistory, ModelHistoryActionRequest request) {
 
     }
 
     @Override
-    public void deleteHistoryModelsForModel(Workspace workspace, Model appModel, Model model) {
+    public void deleteHistoryModelsForModel(Workspace workspace, Model packageModel, Model model) {
 
     }
 
@@ -171,7 +218,7 @@ public class BasicDesignRestApiInterceptor implements DesignRestApiInterceptor {
     }
 
     @Override
-    public void lockModel(Workspace workspace, Model appModel, Model model) {
+    public void lockModel(Workspace workspace, Model packageModel, Model model) {
 
     }
 
@@ -186,12 +233,12 @@ public class BasicDesignRestApiInterceptor implements DesignRestApiInterceptor {
     }
 
     @Override
-    public void uploadDocumentTemplateResource(Workspace workspace, Model appModel, Model model) {
+    public void uploadDocumentTemplateResource(Workspace workspace, Model packageModel, Model model) {
 
     }
 
     @Override
-    public void updateDocumentTemplateResource(Workspace workspace, Model appModel, Model model) {
+    public void updateDocumentTemplateResource(Workspace workspace, Model packageModel, Model model) {
 
     }
 
@@ -201,7 +248,7 @@ public class BasicDesignRestApiInterceptor implements DesignRestApiInterceptor {
     }
 
     @Override
-    public void deleteTemplateResource(Workspace workspace, Model appModel, Model model) {
+    public void deleteTemplateResource(Workspace workspace, Model packageModel, Model model) {
 
     }
 
@@ -211,7 +258,27 @@ public class BasicDesignRestApiInterceptor implements DesignRestApiInterceptor {
     }
 
     @Override
-    public void importAppTranslations(Workspace workspace, Model appModel, Map<String, Translation> translations) {
+    public void importPackageTranslations(Workspace workspace, Model packageModel, Map<String, Translation> translations) {
+
+    }
+
+    @Override
+    public void uploadPackageDocumentResource(Workspace workspace, Model packageModel) {
+
+    }
+
+    @Override
+    public void updatePackageDocumentResource(Workspace workspace, Model packageModel) {
+
+    }
+
+    @Override
+    public void deletePackageDocumentResource(Workspace workspace, Model packageModel, ModelResource resource) {
+
+    }
+
+    @Override
+    public void movePackage(Workspace workspace, Model packageModel, PackageMoveWorkspaceRequest request, Workspace targetWorkSpace) {
 
     }
 }

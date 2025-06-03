@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.stereotype.Component;
@@ -20,7 +19,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 @Component
-@ConditionalOnProperty(prefix = "flowable.design.git.repo", name = "enabled", havingValue = "true")
+//@ConditionalOnProperty(prefix = "flowable.design.git.repo", name = "enabled", havingValue = "true")
 public class RevisionPublisherRestApiInterceptorEnhancer implements BeanPostProcessor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RevisionPublisherRestApiInterceptorEnhancer.class);
@@ -35,7 +34,7 @@ public class RevisionPublisherRestApiInterceptorEnhancer implements BeanPostProc
             enhancer.setSuperclass(bean.getClass());
             enhancer.setCallback((MethodInterceptor) (obj, method, args, proxy) -> {
                 Object result;
-                if(method.getName().equals("publishAppRevision")) {
+                if(method.getName().equals("publishPackageRevision")) {
                     LOGGER.debug("Calling original bean definition for: " + method.getName());
 
                     result = proxy.invoke(bean, args);
