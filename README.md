@@ -18,4 +18,4 @@ Ex., When you publish a revision to Flowable Work from Flowable Design (with thi
 
 ![alt text](https://github.com/abretz-mimacom/flowable-models-publish-to-git/blob/main/assests/revision.png)
 
-![alt text](https://github.com/abretz-mimacom/flowable-models-publish-to-git/blob/main/assests/revision.png)
+![alt text](https://github.com/abretz-mimacom/flowable-models-publish-to-git/blob/main/assests/MR.png)
