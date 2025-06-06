@@ -118,7 +118,7 @@ public class GitRepoPublisherService {
     private void stageFilesToTrackedBranch(Git repo, String app, Boolean update) {
         try {
             repo.add().setUpdate(update)
-                    .addFilepattern(app)
+                    .addFilepattern("src/main/resources")
                     .call();
         } catch (Exception e) {
             throw new RuntimeException("Unable to add existing files to tracked branch", e);

@@ -25,17 +25,18 @@ public class ModelDefinitionWriterService {
 
     public void saveFilesFilesystem(AppRevision appRevision, String destDir) throws IOException {
         byte[] revisionExportBytes = modelHistoryService.getAppRevisionExportBytes(appRevision.getId());
-        String appPath = destDir + File.separator + appRevision.getAppKey();
+        String destResourcesPath = destDir + File.separator + "src" + File.separator + "main" + File.separator + "resources";
+        String destAppsPath =  destResourcesPath + File.separator + "apps";
 
         // write zip file
-        File zip = new File(appPath);
+        File zip = new File(destAppsPath);
         zip.mkdirs();
-        FileOutputStream fos = new FileOutputStream(appPath + File.separator + appRevision.getAppKey().concat(".zip"));
+        FileOutputStream fos = new FileOutputStream(destAppsPath + File.separator + appRevision.getAppKey().concat(".zip"));
         fos.write(revisionExportBytes);
         fos.close();
 
         // write individual files
-        File destination = new File(appPath + File.separator + "models");
+        File destination = new File(destResourcesPath + File.separator + "models" + File.separator + appRevision.getAppKey());
         destination.mkdirs();
         ZipInputStream zis = new ZipInputStream(new ByteArrayInputStream(revisionExportBytes));
         ZipEntry zipEntry = zis.getNextEntry();
