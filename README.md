@@ -15,6 +15,7 @@ Ex., When you publish a revision to Flowable Work from Flowable Design (with thi
 9) Open MR/PR, if not already open (##TO-DO)
 10) Checkout main/master/configured base branch on local
 11) publish original .zip file to Flowable Work
+12) Authenticate using ssh (##To-DO)
 
 ![alt text](https://github.com/abretz-mimacom/flowable-models-publish-to-git/blob/main/assests/revision.png)
 
