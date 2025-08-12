@@ -105,4 +105,11 @@
         </plugin>
       </plugins>
     </build>
+    <distributionManagement>
+      <repository>
+        <id>github</id>
+        <name>GitHub abretz-mimacom Apache Maven Packages</name>
+        <url>https://maven.pkg.github.com/abretz-mimacom/flowable-models-publish-to-git</url>
+      </repository>
+    </distributionManagement>
 </project>
