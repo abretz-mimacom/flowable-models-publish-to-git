@@ -26,6 +26,9 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
+    - name: Show settings.xml (debug)
+      run: cat $GITHUB_WORKSPACE/settings.xml
+      
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
