@@ -1,6 +1,0 @@
-/workspaces/flowable-models-publish-to-git/src/main/java/com/flowable/design/model/publisher/interceptor/BasicDesignRestApiInterceptor.java
-/workspaces/flowable-models-publish-to-git/src/main/java/com/flowable/design/model/publisher/properties/ModelPublisherProperties.java
-/workspaces/flowable-models-publish-to-git/src/main/java/com/flowable/design/model/publisher/interceptor/RevisionPublisherRestApiInterceptorEnhancer.java
-/workspaces/flowable-models-publish-to-git/src/main/java/com/flowable/design/model/publisher/service/ModelDefinitionWriterService.java
-/workspaces/flowable-models-publish-to-git/src/main/java/com/flowable/design/model/publisher/service/GitRepoPublisherService.java
-/workspaces/flowable-models-publish-to-git/src/main/java/com/flowable/design/model/publisher/RevisionPublisherAutoconfiguration.java

@@ -1,6 +1,0 @@
-com/flowable/design/model/publisher/interceptor/BasicDesignRestApiInterceptor.class
-com/flowable/design/model/publisher/service/ModelDefinitionWriterService.class
-com/flowable/design/model/publisher/service/GitRepoPublisherService.class
-com/flowable/design/model/publisher/properties/ModelPublisherProperties.class
-com/flowable/design/model/publisher/RevisionPublisherAutoconfiguration.class
-com/flowable/design/model/publisher/interceptor/RevisionPublisherRestApiInterceptorEnhancer.class
