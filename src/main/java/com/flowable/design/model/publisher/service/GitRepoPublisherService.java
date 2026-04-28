@@ -159,6 +159,6 @@ public class GitRepoPublisherService {
             throw new RuntimeException("Unable to delete local branch after pushing commited changes.", e);
         }
     }
-    private void openMergeRequest(Git repo, String branchName, UsernamePasswordCredentialsProvider creds) {
+    private void openMergeRequest(Git repo, String branchName) {
     }
 }
