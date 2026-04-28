@@ -15,7 +15,7 @@ Ex., When you publish a revision to Flowable Work from Flowable Design (with thi
 9) Open MR/PR, if not already open (##TO-DO)
 10) Checkout main/master/configured base branch on local
 11) publish original .zip file to Flowable Work
-12) Authenticate using ssh
+12) Authenticate using ssh from `$HOME/.ssh` of the runtime filesystem. This SSH pub key needs to [added to the user](https://github.com/settings/keys) of the git repo owner/service account as Authentication type.
 
 ## Known Limitations/Issues:
 - [ ]   Limited to 1 ssh key, so every commit comes from a single user.
