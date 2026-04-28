@@ -17,10 +17,6 @@ Ex., When you publish a revision to Flowable Work from Flowable Design (with thi
 11) publish original .zip file to Flowable Work
 12) Authenticate using ssh
 
-![alt text](https://github.com/abretz-mimacom/flowable-models-publish-to-git/blob/main/assests/revision.png)
-
-![alt text](https://github.com/abretz-mimacom/flowable-models-publish-to-git/blob/main/assests/MR.png)
-
 ## Known Limitations/Issues:
 - [ ]   Limited to 1 ssh key, so every commit comes from a single user.
   *   Would be ideal for every Design user to have an ssh key
@@ -28,3 +24,10 @@ Ex., When you publish a revision to Flowable Work from Flowable Design (with thi
 - [ ]   Git commit/push sequence is triggered synchronously by the `RestInterceptor`. This is slow/feel's clunky. A better implmentation would be hooking into the low-level engine events on a Revision Publish event, and triggering the git flow async. However, current implmentation does provide immediate feedback if the git flow fails, so an async git flow would require a webhook back to the UI, if we are to present the success/failure of the git flow.
 
 - [ ]  JSON files should be formatted as plaintext&readable JSON in the 'src/main/resources/models/**` directories (currently single-line blobs) for better review
+
+## Examples
+
+![alt text](https://github.com/abretz-mimacom/flowable-models-publish-to-git/blob/main/assests/revision.png)
+
+![alt text](https://github.com/abretz-mimacom/flowable-models-publish-to-git/blob/main/assests/MR.png)
+
