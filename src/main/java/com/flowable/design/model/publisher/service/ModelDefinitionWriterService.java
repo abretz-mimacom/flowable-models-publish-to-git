@@ -10,6 +10,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -40,6 +43,8 @@ public class ModelDefinitionWriterService {
         destination.mkdirs();
         ZipInputStream zis = new ZipInputStream(new ByteArrayInputStream(revisionExportBytes));
         ZipEntry zipEntry = zis.getNextEntry();
+        List<File> filesWritten = new ArrayList<>();
+        File[] filesToDelete = destination.listFiles();
 
         while (zipEntry != null) {
             File newFile = newFile(destination, zipEntry);
@@ -60,12 +65,15 @@ public class ModelDefinitionWriterService {
                 while ((len = zis.read(buffer)) > 0) {
                     currentFos.write(buffer, 0, len);
                 }
+                filesWritten.add(newFile);
                 currentFos.close();
             }
             zipEntry = zis.getNextEntry();
         }
         zis.closeEntry();
         zis.close();
+
+        Arrays.stream(filesToDelete).filter(f -> !filesWritten.contains(f)).forEach(File::delete);
     }
 
     protected static File newFile(File destination, ZipEntry zipEntry) throws IOException {

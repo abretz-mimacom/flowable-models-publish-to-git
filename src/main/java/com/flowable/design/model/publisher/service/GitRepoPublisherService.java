@@ -53,11 +53,11 @@ public class GitRepoPublisherService {
 
         checkoutTargetBranch(repo, branchName/*, creds*/);
 
-        stageFilesToTrackedBranch(repo, appRevision.getAppKey(), true);
+        stageFilesToTrackedBranch(repo, appRevision.getAppKey(), false);
 
         modelDefinitionWriterService.saveFilesFilesystem(appRevision, filePath);
 
-        stageFilesToTrackedBranch(repo, appRevision.getAppKey(), false);
+        stageFilesToTrackedBranch(repo, appRevision.getAppKey(), true);
 
         commitStagedFiles(repo, appRevision);
 

@@ -3,10 +3,12 @@ package com.flowable.design.model.publisher.interceptor;
 import com.flowable.design.engine.api.ModelResource;
 import com.flowable.design.engine.api.ModelType;
 import com.flowable.design.engine.api.PackageType;
+import com.flowable.design.engine.api.history.AppRevision;
 import com.flowable.design.engine.api.history.ModelHistory;
 import com.flowable.design.engine.api.history.PackageRevision;
 import com.flowable.design.engine.api.management.Workspace;
 import com.flowable.design.engine.api.runtime.Model;
+import com.flowable.design.model.publisher.service.GitRepoPublisherService;
 import com.flowable.design.rest.service.api.DesignRestApiInterceptor;
 import com.flowable.design.rest.service.api.model.*;
 import com.flowable.design.rest.service.api.model._import.ImportModelRequest;
@@ -15,12 +17,21 @@ import com.flowable.design.rest.service.api.model.export.ExportPackageRequest;
 import com.flowable.design.rest.service.api.model.history.ModelHistoryActionRequest;
 import com.flowable.design.rest.service.api.model.history.PackageRevisionCreateRequest;
 import com.flowable.design.rest.service.api.model.translation.Translation;
+import org.eclipse.jgit.api.errors.GitAPIException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class BasicDesignRestApiInterceptor implements DesignRestApiInterceptor {
+
+    @Autowired
+    GitRepoPublisherService gitRepoPublisherService;
 
     @Override
     public void updatePackage(Workspace workspace, Model packageModel, PackageModelUpdateRequest request) {
@@ -124,6 +135,11 @@ public class BasicDesignRestApiInterceptor implements DesignRestApiInterceptor {
 
     @Override
     public void migrateModel(Workspace workspace, Model packageModel, Model model) {
+
+    }
+
+    @Override
+    public void exportModel(Workspace workspace, Model model) {
 
     }
 
@@ -258,6 +274,36 @@ public class BasicDesignRestApiInterceptor implements DesignRestApiInterceptor {
     }
 
     @Override
+    public void uploadKnowledgeResource(Workspace workspace, Model model) {
+
+    }
+
+    @Override
+    public void uploadKnowledgeResource(Workspace workspace, Model packageModel, Model model) {
+
+    }
+
+    @Override
+    public void updateKnowledgeResource(Workspace workspace, Model packageModel, Model model) {
+
+    }
+
+    @Override
+    public void updateKnowledgeResource(Workspace workspace, Model model) {
+
+    }
+
+    @Override
+    public void deleteKnowledgeResource(Workspace workspace, Model packageModel, Model model) {
+
+    }
+
+    @Override
+    public void deleteKnowledgeResource(Workspace workspace, Model model) {
+
+    }
+
+    @Override
     public void importPackageTranslations(Workspace workspace, Model packageModel, Map<String, Translation> translations) {
 
     }
@@ -279,6 +325,21 @@ public class BasicDesignRestApiInterceptor implements DesignRestApiInterceptor {
 
     @Override
     public void movePackage(Workspace workspace, Model packageModel, PackageMoveWorkspaceRequest request, Workspace targetWorkSpace) {
+
+    }
+
+    @Override
+    public void handleChatMessageForModelInPackage(Workspace workspace, Model packageModel, Model Model) {
+
+    }
+
+    @Override
+    public void handleCodingChatMessageForModelInPackage(Workspace workspace, Model packageModel, Model Model) {
+
+    }
+
+    @Override
+    public void handleChatMessageForPackageModel(Workspace workspace, Model packageModel) {
 
     }
 }
