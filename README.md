@@ -23,7 +23,7 @@ Ex., When you publish a revision to Flowable Work from Flowable Design (with thi
     
 - [ ]   Git commit/push sequence is triggered synchronously by the `RestInterceptor`. This is slow/feel's clunky. A better implmentation would be hooking into the low-level engine events on a Revision Publish event, and triggering the git flow async. However, current implmentation does provide immediate feedback if the git flow fails, so an async git flow would require a webhook back to the UI, if we are to present the success/failure of the git flow.
 
-- [ ]  JSON files should be formatted as plaintext&readable JSON in the 'src/main/resources/models/**` directories (currently single-line blobs) for better review
+- [ ]  JSON files should be formatted as plaintext&readable JSON in the `src/main/resources/models/**` directories (currently single-line blobs) for better review
 
 ## Examples
 
