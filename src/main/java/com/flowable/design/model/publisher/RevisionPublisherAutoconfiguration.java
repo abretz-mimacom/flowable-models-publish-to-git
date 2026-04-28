@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
     DesignEngineAutoConfiguration.class})
 @EnableConfigurationProperties(ModelPublisherProperties.class)
 public class RevisionPublisherAutoconfiguration {
-//    @ConditionalOnMissingBean(DesignRestApiInterceptor.class)
+   @ConditionalOnMissingBean(DesignRestApiInterceptor.class)
     @Bean
     public DesignRestApiInterceptor basicDesignRestApiInterceptor(){
         return new BasicDesignRestApiInterceptor();
