@@ -8,7 +8,6 @@ import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.api.errors.NoFilepatternException;
 import org.eclipse.jgit.api.errors.RefAlreadyExistsException;
 import org.eclipse.jgit.api.errors.RefNotAdvertisedException;
-import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import org.eclipse.jgit.transport.sshd.SshdSessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,19 +38,13 @@ public class GitRepoPublisherService {
     @Value("${flowable.design.git.repo.remote-branch}")
     private String remoteBranch;
 
-    // @Value("${flowable.design.git.repo.username}")
-    // private String username;
-
-    // @Value("${flowable.design.git.repo.password}")
-    // private String password;
 
     public void commitAndPushChanges(Model appModel, AppRevision appRevision) throws IOException, NoFilepatternException, GitAPIException{
         String branchName = appRevision.getAppKey().concat(File.separator + appRevision.getKey());
-        // UsernamePasswordCredentialsProvider creds = new UsernamePasswordCredentialsProvider(username, password);
 
-        Git repo = getLatestRemoteBranch(/*creds*/);
+        Git repo = getLatestRemoteBranch();
 
-        checkoutTargetBranch(repo, branchName/*, creds*/);
+        checkoutTargetBranch(repo, branchName);
 
         stageFilesToTrackedBranch(repo, appRevision.getAppKey(), false);
 
@@ -61,19 +54,18 @@ public class GitRepoPublisherService {
 
         commitStagedFiles(repo, appRevision);
 
-        pushCommit(repo, branchName/*, creds*/);
+        pushCommit(repo, branchName);
 
         deleteLocalBranch(repo, branchName);
 
     }
 
-    private Git getLatestRemoteBranch(/*UsernamePasswordCredentialsProvider creds*/) {
+    private Git getLatestRemoteBranch() {
         Git repo;
         try {
             repo = Git.open(new File(filePath));
             repo.checkout().setName(remoteBranch).call();
             repo.pull()
-            // .setCredentialsProvider(creds)
             .call();
         } catch (IOException e ) {
             LOGGER.debug("No existing repo found in ${filePath}. Cloning repo from remote.");
@@ -83,7 +75,6 @@ public class GitRepoPublisherService {
                 repo = Git.cloneRepository()
                         .setURI(uri)
                         .setCloneAllBranches(true)
-                        // .setCredentialsProvider(creds)
                         .setDirectory(new File(filePath))
                         .call();
             } catch (GitAPIException exp) {
@@ -97,7 +88,7 @@ public class GitRepoPublisherService {
         return repo;
     }
 
-    private void checkoutTargetBranch(Git repo, String branchName/*,UsernamePasswordCredentialsProvider creds*/) {
+    private void checkoutTargetBranch(Git repo, String branchName) {
         try {
             repo.checkout().setCreateBranch(true).setName(branchName).setStartPoint(remoteBranch).call();
         } catch (RefAlreadyExistsException e) {
@@ -113,7 +104,6 @@ public class GitRepoPublisherService {
 
         try {
             repo.pull()
-            // .setCredentialsProvider(creds)
             .call();
         } catch (RefNotAdvertisedException e) {
             LOGGER.debug("No branch: ${branchName} on remote to pull from. Continuing on local branch.");
@@ -151,10 +141,9 @@ public class GitRepoPublisherService {
         }
     }
 
-    private void pushCommit(Git repo, String branchName/*, UsernamePasswordCredentialsProvider creds*/) {
+    private void pushCommit(Git repo, String branchName) {
         try {
             repo.push()
-            // .setCredentialsProvider(creds)
             .setRemote(REMOTE)
             .add(branchName)
             .call();
