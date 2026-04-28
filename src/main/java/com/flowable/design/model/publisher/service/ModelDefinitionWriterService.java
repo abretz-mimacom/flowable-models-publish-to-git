@@ -43,8 +43,8 @@ public class ModelDefinitionWriterService {
         destination.mkdirs();
         ZipInputStream zis = new ZipInputStream(new ByteArrayInputStream(revisionExportBytes));
         ZipEntry zipEntry = zis.getNextEntry();
-        List<File> filesWritten = new ArrayList<>();
-        File[] filesToDelete = destination.listFiles();
+        List<File> filesWritten = new ArrayList<>(); // track files written from publish
+        File[] filesToDelete = destination.listFiles(); // list files in tracking branch
 
         while (zipEntry != null) {
             File newFile = newFile(destination, zipEntry);
@@ -63,6 +63,7 @@ public class ModelDefinitionWriterService {
                 FileOutputStream currentFos = new FileOutputStream(newFile);
                 int len;
                 while ((len = zis.read(buffer)) > 0) {
+                    // ##TODO - check for JSON and write as formatted JSON
                     currentFos.write(buffer, 0, len);
                 }
                 filesWritten.add(newFile);
@@ -73,6 +74,7 @@ public class ModelDefinitionWriterService {
         zis.closeEntry();
         zis.close();
 
+        // delete files that dont exist in the deployment, but are in the tracking branch
         Arrays.stream(filesToDelete).filter(f -> !filesWritten.contains(f)).forEach(File::delete);
     }
 
