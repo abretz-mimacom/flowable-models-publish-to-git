@@ -9,8 +9,6 @@ public class ModelPublisherProperties {
     private String cloneDir;
     private String uri;
     private String remoteBranch;
-    // private String username;
-    // private String password;
 
     public String getCloneDir() {
         return cloneDir;
@@ -35,22 +33,6 @@ public class ModelPublisherProperties {
     public void setRemoteBranch(String remoteBranch) {
         this.remoteBranch = remoteBranch;
     }
-
-    // public String getUsername() {
-    //     return username;
-    // }
-
-    // public void setUsername(String username) {
-    //     this.username = username;
-    // }
-
-    // public String getPassword() {
-    //     return password;
-    // }
-
-    // public void setPassword(String password) {
-    //     this.password = password;
-    // }
 
     public boolean isEnabled() {
         return enabled;
